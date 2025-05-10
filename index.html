@@ -1,17 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Se define la codificación de caracteres para la página -->
     <meta charset="UTF-8">
+    
+    <!-- Define cómo se ajusta el contenido en dispositivos móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Título del documento -->
     <title>Document</title>
+    
+    <!-- Enlace al archivo JavaScript externo 'app.js' para cargarlo de manera diferida -->
     <script src="./js/app.js" defer></script>
+    
+    <!-- Enlace a la hoja de estilos externa 'Style.css' -->
     <link rel="stylesheet" href="./css/Style.css">
+    
+    <!-- Enlace a la fuente 'Material Symbols Outlined' desde Google Fonts, para usar iconos de Material Design -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" />
 </head>
 <body>
 
+    <!-- Componente personalizado para la barra de búsqueda -->
     <search-bar></search-bar>
+    
+    <!-- Componente personalizado para mostrar tarjetas de héroes -->
     <info-cards></info-cards>
+    
+    <!-- Componente personalizado para mostrar detalles ampliados de los héroes -->
     <vm-hero-cards></vm-hero-cards>
 
 </body>

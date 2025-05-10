@@ -1,3 +1,4 @@
+/* Estilo aplicado antes del contenido del body */
 body::before {
     content: "";
     position: fixed;
@@ -11,7 +12,7 @@ body::before {
     opacity: 0.4;
     z-index: -1;
 }
-
+/* Estilos para el body de la página */
 body {
     box-sizing: border-box;
     margin: 0;
@@ -19,66 +20,8 @@ body {
     width: 100vw;
     height: 100vh;
 }
-/*#card{
-    background-color: #d3d6de;
-    opacity: 0.9;
-    box-shadow: 5px 5px 10px #757575;
-    padding: 15px;
-    width: 22vw;
-    font-size: 1.1rem;
-    border-radius: 10px;
-    border: 1.7px solid #282828;
-    overflow-x: auto;
-}
-#card img{
-    margin-left: 1vw;
-    margin-right: 1vw;
-    width: 20vw;
-}
-#btnVerMas{
-    background-color: #282828;
-    opacity: 2.8;
-    color: #cacaca;
-    font-size: 1rem;
-    width: 22vw;
-}*/
+/* Estilo para el componente 'info-cards' */
 info-cards{
     display: grid;
     grid-template-columns: repeat(3,30%);
-}
-
-/* Dispositivos pequeños (móviles) */
-
-
-
-/* Dispositivos medianos (tabletas) */
-@media (min-width: 601px) and (max-width: 1024px) {
-  #searchInput {
-    width: 50vw;
-  }
-  #searchButton {
-    width: 25vw;
-  }
-  #card {
-    width: 40vw;
-  }
-  #card img {
-    max-width: 35vw;
-    max-height: 40vh;
-  }
-  .container {
-    grid-template-areas:
-      "image"
-      "text"
-      "button";
-    width: 80%;
-    height: auto;
-  }
-  .imgSide, .textSide, .fullDescriptionSide {
-    width: 100%;
-  }
-  .imgSide #heroImg {
-    height: auto;
-    max-width: 90%;
-  }
 }

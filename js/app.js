@@ -218,9 +218,7 @@ class infoCards extends HTMLElement{
                     color: #cacaca;
                     font-size: 1rem;
                     width: 22vw;
-                }
-                                
-                `
+                }`
             shadow.append(cardStyle, card);
             card.setAttribute('data-nombre', heroe.nombre.toLowerCase());
         });
@@ -325,5 +323,4 @@ class vmHeroeCards extends HTMLElement{
     }
 }
 customElements.define('vm-hero-cards', vmHeroeCards);
-//hacer busqueda
-//boton de ver mas
+
