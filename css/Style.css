@@ -47,5 +47,38 @@ info-cards{
     grid-template-columns: repeat(3,30%);
 }
 
+/* Dispositivos pequeños (móviles) */
 
 
+
+/* Dispositivos medianos (tabletas) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  #searchInput {
+    width: 50vw;
+  }
+  #searchButton {
+    width: 25vw;
+  }
+  #card {
+    width: 40vw;
+  }
+  #card img {
+    max-width: 35vw;
+    max-height: 40vh;
+  }
+  .container {
+    grid-template-areas:
+      "image"
+      "text"
+      "button";
+    width: 80%;
+    height: auto;
+  }
+  .imgSide, .textSide, .fullDescriptionSide {
+    width: 100%;
+  }
+  .imgSide #heroImg {
+    height: auto;
+    max-width: 90%;
+  }
+}

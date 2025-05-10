@@ -24,7 +24,7 @@ const heroes=[{
     anoAparicion: 1968,
     descripcion: 'Piloto con poderes cósmicos que protege el universo.',
     fullDescripcion: 'Carol Danvers, también conocida como Captain Marvel, es una ex piloto de la Fuerza Aérea que obtuvo poderes extraordinarios tras un accidente con tecnología alienígena. Su fuerza, vuelo y capacidad de absorber y proyectar energía la convierten en una de las heroínas más poderosas del universo Marvel.'
-  },/*
+  },
   {
     nombre: 'Jean Grey',
     imagen: './images/Jean Grey.jpg',
@@ -60,10 +60,11 @@ const heroes=[{
     anoAparicion: 1964,
     descripcion: 'Hechicera poderosa con habilidades mágicas.',
     fullDescripcion: 'Zatanna es una ilusionista profesional y una de las magas más poderosas del universo DC. Hija del mago Giovanni Zatara, lanza hechizos pronunciándolos al revés. Su valentía y compromiso con el bien la han llevado a ser miembro clave de la Liga de la Justicia Dark.'
-  }*/
+  }
 ];
 
-let guardarelfiltro = heroes.name.includes(searchTerm)
+//let guardarelfiltro = heroes.name.includes(searchTerm)
+
 
 class searchBar extends HTMLElement{
     constructor() {
@@ -131,13 +132,34 @@ class searchBar extends HTMLElement{
             text-transform: none;
             white-space: nowrap;
             direction: ltr;
+        }
+        @media (max-width: 600px) {
+        #searchContainer {
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        #searchInput {
+            width: 80vw;
+        }
+        #searchButton {
+            width: 60vw;
         }`
         shadow.append(searchStyle, searchContainer);
         this.shadowRoot.querySelector('#searchInput').addEventListener('input', () => {
-        let text = this.shadowRoot.querySelector('#searchInput').value;
-        alert(text);
-        })
-    }
+        const searchTerm = this.shadowRoot.querySelector('#searchInput').value.trim().toLowerCase();
+        const infoCardsElement = document.querySelector('info-cards');
+        const cards = infoCardsElement.shadowRoot.querySelectorAll('#card');
+
+        cards.forEach(card => {
+            const nombre = card.getAttribute('data-nombre');
+            if (nombre.includes(searchTerm)) {
+                card.style.display = 'flex'; 
+            } else {
+                card.style.display = 'none'; 
+            }
+            });
+    })}
 }
 customElements.define('search-bar',searchBar);
 
@@ -159,6 +181,10 @@ class infoCards extends HTMLElement{
                 <button class='btnVerMas' id="btnVerMas" data-nombre=${heroe.nombre}>Ver más</button>`
             const cardStyle= document.createElement('style');
             cardStyle.textContent=`
+                info-cards{
+                    display: grid;
+                    grid-template-columns: repeat(3,30%);
+                }
                 #card{
                     text-align: center;
                     background-color: #d3d6de;
@@ -172,6 +198,7 @@ class infoCards extends HTMLElement{
                     overflow-x: auto;
                     display: flex;
                     flex-direction: column;
+                    margin-bottom: 3vh;
                 }
                 #card img{
                     border: 2px solid black;
@@ -191,12 +218,20 @@ class infoCards extends HTMLElement{
                     color: #cacaca;
                     font-size: 1rem;
                     width: 22vw;
-                }`
+                }
+                                
+                `
             shadow.append(cardStyle, card);
-
-        }
-    )}
+            card.setAttribute('data-nombre', heroe.nombre.toLowerCase());
+        });
+    };
 }
+document.querySelectorAll('.btnVerMas').forEach(showMore =>{
+    showMore.addEventListener('click', () =>{
+        const showMoreHero = showMore.closest('.btnVerMas').getAttribute('data-nombre');
+        showMoreDetails(showMoreHero);
+    })
+})
 customElements.define('info-cards', infoCards);
 class vmHeroeCards extends HTMLElement{
     constructor(){
